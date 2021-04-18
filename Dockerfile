@@ -17,7 +17,8 @@ WORKDIR $APPDIR
 COPY app $APPDIR
 
 RUN set -eux ; \
-    php $HOMEDIR/composer.phar install
+    php $HOMEDIR/composer.phar install ; \
+    php artisan key:generate
 
 CMD ["php", "-S", "0.0.0.0:8080", "-t", "./public/"]
 EXPOSE 8080
